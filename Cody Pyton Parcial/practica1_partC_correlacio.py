@@ -16,14 +16,6 @@ def load_dataset(path):
     return dataset
 
 
-def standarize(x_train):
-    mean = x_train.mean(0)
-    std = x_train.std(0)
-    x_t = x_train - mean[None, :]
-    x_t /= std[None, :]
-    return x_t
-
-
 # Carreguem dataset d'exemple
 dataset = load_dataset('Life Expectancy Data.csv')
 data = dataset.values
@@ -45,6 +37,12 @@ plt.figure(figsize=(55,5))
 plt.xticks(rotation=90)
 
 ax = plt.scatter(x[:,0], y)
+
+# Distribució dels valors de l'esperança de vida entre 
+# països desenvolupats i en desenvolupament
+plt.figure(figsize=(2,10))
+
+ax = plt.scatter(x[:,2], y)
 
 # Mirem la correlació entre els atributs d'entrada per entendre millor les dades
 correlacio = dataset.corr()
